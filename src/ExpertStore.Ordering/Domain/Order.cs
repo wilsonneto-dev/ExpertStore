@@ -1,0 +1,26 @@
+﻿namespace ExpertStore.Ordering.Domain
+{
+    public enum OrderStatus
+    {
+        Processing = 0,
+        Approved = 1,
+        PaymentError = 2,
+        Error = 3
+    }
+
+    public class Order
+    {
+        public Order(int productId, int quantity)
+        {
+            ProductId = productId;
+            Quantity = quantity;
+            Id = Guid.NewGuid();
+            Status = OrderStatus.Processing;
+        }
+
+        public Guid Id { get; }
+        public int ProductId { get; }
+        public OrderStatus Status  { get; }
+        public int Quantity { get; }
+    }
+}
