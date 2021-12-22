@@ -1,15 +1,23 @@
+using ExpertStore.Ordering.Domain;
+using ExpertStore.Ordering.Repositories;
+using ExpertStore.Ordering.UseCases;
+using ExpertStore.SeedWork;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
+
+builder.Services.AddTransient<IUseCase<CreateOrderInput, CreateOrderOutput>, CreateOrder>();
+builder.Services.AddTransient<IUseCase<List<ListOrdersOutputItem>>, ListOrders>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

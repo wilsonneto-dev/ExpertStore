@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4969A1DF-C0A9-47E0-BD08-4A07FB9635E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertStore.Ordering", "src\ExpertStore.Ordering\ExpertStore.Ordering.csproj", "{CA8DC40C-A451-4996-996C-A93DC14AAD79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpertStore.Ordering", "src\ExpertStore.Ordering\ExpertStore.Ordering.csproj", "{CA8DC40C-A451-4996-996C-A93DC14AAD79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertStore.SeedWork", "src\ExpertStore.SeedWork\ExpertStore.SeedWork.csproj", "{1FDB0348-4A46-4FC0-AE33-410B02486B32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,17 @@ Global
 		{CA8DC40C-A451-4996-996C-A93DC14AAD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA8DC40C-A451-4996-996C-A93DC14AAD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA8DC40C-A451-4996-996C-A93DC14AAD79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FDB0348-4A46-4FC0-AE33-410B02486B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FDB0348-4A46-4FC0-AE33-410B02486B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FDB0348-4A46-4FC0-AE33-410B02486B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FDB0348-4A46-4FC0-AE33-410B02486B32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA8DC40C-A451-4996-996C-A93DC14AAD79} = {4969A1DF-C0A9-47E0-BD08-4A07FB9635E8}
+		{1FDB0348-4A46-4FC0-AE33-410B02486B32} = {4969A1DF-C0A9-47E0-BD08-4A07FB9635E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF02B4F4-CAFC-4316-9F3D-D7B6E0F54FBC}

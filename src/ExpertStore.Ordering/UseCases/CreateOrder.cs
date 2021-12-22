@@ -1,9 +1,30 @@
 ﻿using ExpertStore.Ordering.Domain;
+using ExpertStore.SeedWork;
 
 namespace ExpertStore.Ordering.UseCases
 {
-    public class CreateOrder
+    public class CreateOrder: IUseCase<CreateOrderInput,CreateOrderOutput>
     {
+        private readonly IOrderRepository _orderRepository;
+
+        public CreateOrder(IOrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository; 
+        }
+
+        public async Task<CreateOrderOutput> Handle(CreateOrderInput input)
+        {
+            ValidateInput(input);
+            var order = new Order(input.ProductId, input.Quantity);
+            await _orderRepository.Save(order);
+            return new CreateOrderOutput(order.Id, order.Status.ToString());
+        }
+
+        private void ValidateInput(CreateOrderInput input)
+        {
+            if (input.Quantity <= 0 || input.ProductId <= 0)
+                throw new ArgumentException($"{nameof(input.Quantity)} e {nameof(input.ProductId)} devem ser positivos maiores que 0");
+        }
     }
 
     public class CreateOrderInput
@@ -20,13 +41,13 @@ namespace ExpertStore.Ordering.UseCases
 
     public class CreateOrderOutput
     {
-        public CreateOrderOutput(Guid id, OrderStatus status)
+        public CreateOrderOutput(Guid id, String status)
         {
             Id = id;
             Status = status;
         }
 
         public Guid Id { get; }
-        public OrderStatus Status { get; }
+        public String Status { get; }
     }
 }

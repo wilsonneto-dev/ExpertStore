@@ -16,11 +16,13 @@
             Quantity = quantity;
             Id = Guid.NewGuid();
             Status = OrderStatus.Processing;
+            Date = DateTime.Now;
         }
 
         public Guid Id { get; }
         public int ProductId { get; }
         public OrderStatus Status  { get; }
         public int Quantity { get; }
+        public DateTime Date { get; }
     }
 }
