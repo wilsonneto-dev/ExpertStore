@@ -1,4 +1,5 @@
 ﻿using ExpertStore.Ordering.Domain;
+using ExpertStore.Ordering.Integration;
 using ExpertStore.SeedWork;
 
 namespace ExpertStore.Ordering.UseCases
@@ -6,10 +7,12 @@ namespace ExpertStore.Ordering.UseCases
     public class CreateOrder: IUseCase<CreateOrderInput,CreateOrderOutput>
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IEventBus _eventBus;
 
-        public CreateOrder(IOrderRepository orderRepository)
+        public CreateOrder(IOrderRepository orderRepository, IEventBus eventBus)
         {
-            _orderRepository = orderRepository; 
+            _orderRepository = orderRepository;
+            _eventBus = eventBus;
         }
 
         public async Task<CreateOrderOutput> Handle(CreateOrderInput input)
@@ -17,6 +20,7 @@ namespace ExpertStore.Ordering.UseCases
             ValidateInput(input);
             var order = new Order(input.ProductId, input.Quantity);
             await _orderRepository.Save(order);
+            _eventBus.Publish(new OrderCreatedEvent(order));
             return new CreateOrderOutput(order.Id, order.Status.ToString());
         }
 

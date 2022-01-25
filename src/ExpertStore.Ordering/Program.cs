@@ -9,9 +9,9 @@ builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
 
 builder.Services.AddTransient<IUseCase<CreateOrderInput, CreateOrderOutput>, CreateOrder>();
 builder.Services.AddTransient<IUseCase<List<ListOrdersOutputItem>>, ListOrders>();
+builder.Services.AddRabbitMessageBus();
 
 builder.Services.AddControllers();
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

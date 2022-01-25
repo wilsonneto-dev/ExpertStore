@@ -2,6 +2,6 @@
 {
     public interface IIntegrationEvent
     {
-
+        public object Event { get; }
     }
 }
