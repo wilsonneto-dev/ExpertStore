@@ -8,7 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/Notifications/Notifications.csproj", "src/Notifications/"]
-COPY ["src/ExpertStore.SeedWork/ExpertStore.SeedWork.csproj", "src/ExpertStore.SeedWork/"]
 RUN dotnet restore "src/Notifications/Notifications.csproj"
 COPY . .
 WORKDIR "/src/src/Notifications"

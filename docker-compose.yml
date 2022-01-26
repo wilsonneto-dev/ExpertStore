@@ -17,3 +17,17 @@ services:
       context: .
       dockerfile: src/PaymentsProcessor/Dockerfile
 
+
+  inventory:
+    image: ${DOCKER_REGISTRY-}inventory
+    build:
+      context: .
+      dockerfile: src/Inventory/Dockerfile
+
+
+  notifications:
+    image: ${DOCKER_REGISTRY-}notifications
+    build:
+      context: .
+      dockerfile: src/Notifications/Dockerfile
+
