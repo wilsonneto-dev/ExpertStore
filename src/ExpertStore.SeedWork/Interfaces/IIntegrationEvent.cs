@@ -1,4 +1,4 @@
-﻿namespace ExpertStore.SeedWork
+﻿namespace ExpertStore.SeedWork.Interfaces
 {
     public interface IIntegrationEvent
     {

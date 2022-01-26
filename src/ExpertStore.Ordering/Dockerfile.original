@@ -8,7 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/ExpertStore.Ordering/ExpertStore.Ordering.csproj", "src/ExpertStore.Ordering/"]
-COPY ["src/ExpertStore.SeedWork/ExpertStore.SeedWork.csproj", "src/ExpertStore.SeedWork/"]
 RUN dotnet restore "src/ExpertStore.Ordering/ExpertStore.Ordering.csproj"
 COPY . .
 WORKDIR "/src/src/ExpertStore.Ordering"

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ExpertStore.SeedWork.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -6,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 using RabbitMQ.Client;
 using System.Text;
 
-namespace ExpertStore.SeedWork;
+namespace ExpertStore.SeedWork.RabbitProducer;
 
 public class RabbitMessageBus : IEventBus
 {
@@ -69,13 +70,9 @@ internal static class StringExtensions
     public static string ToSnakeDotCase(this string text)
     {
         if (text == null)
-        {
             throw new ArgumentNullException(nameof(text));
-        }
         if (text.Length < 2)
-        {
             return text;
-        }
         var sb = new StringBuilder();
         sb.Append(char.ToLowerInvariant(text[0]));
         for (int i = 1; i < text.Length; ++i)
@@ -91,6 +88,8 @@ internal static class StringExtensions
                 sb.Append(c);
             }
         }
-        return sb.ToString();
+        var eventName = sb.ToString();
+        eventName = eventName.Replace(".event", "");
+        return eventName;
     }
 }

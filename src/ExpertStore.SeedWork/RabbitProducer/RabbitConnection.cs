@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 
-namespace ExpertStore.SeedWork;
+namespace ExpertStore.SeedWork.RabbitProducer;
 
 public interface IRabbitConnection
 {

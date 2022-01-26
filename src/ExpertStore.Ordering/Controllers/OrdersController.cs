@@ -1,5 +1,5 @@
 ﻿using ExpertStore.Ordering.UseCases;
-using ExpertStore.SeedWork;
+using ExpertStore.SeedWork.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

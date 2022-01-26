@@ -1,6 +1,6 @@
 ﻿using ExpertStore.Ordering.Domain;
-using ExpertStore.Ordering.Integration;
-using ExpertStore.SeedWork;
+using ExpertStore.SeedWork.IntegrationEvents;
+using ExpertStore.SeedWork.Interfaces;
 
 namespace ExpertStore.Ordering.UseCases
 {
@@ -20,7 +20,11 @@ namespace ExpertStore.Ordering.UseCases
             ValidateInput(input);
             var order = new Order(input.ProductId, input.Quantity);
             await _orderRepository.Save(order);
-            _eventBus.Publish(new OrderCreatedEvent(order));
+            _eventBus.Publish(new OrderCreatedEvent(
+                order.Date, 
+                order.Id, 
+                order.ProductId, 
+                order.Quantity));
             return new CreateOrderOutput(order.Id, order.Status.ToString());
         }
 

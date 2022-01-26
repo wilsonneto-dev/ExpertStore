@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Metadata;
 using ExpertStore.Ordering.Domain;
 using ExpertStore.Ordering.Repositories;
-using ExpertStore.SeedWork;
+using ExpertStore.SeedWork.Interfaces;
 
 namespace ExpertStore.Ordering.UseCases
 {
