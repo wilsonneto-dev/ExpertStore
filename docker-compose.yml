@@ -1,16 +1,24 @@
 version: '3.4'
 
 services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+
   expertstore.ordering:
     image: ${DOCKER_REGISTRY-}expertstoreordering
     build:
       context: .
       dockerfile: src/ExpertStore.Ordering/Dockerfile
+
   rabbit:
     image: rabbitmq:3-management
     ports:
       - 15672:15672
       - 5672:5672
+
   paymentsprocessor:
     image: ${DOCKER_REGISTRY-}paymentsprocessor
     build:
